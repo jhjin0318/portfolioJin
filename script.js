@@ -1,149 +1,216 @@
-// GSAP 및 ScrollTrigger 플러그인 등록
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. 기존 페이드업(Fade-up) 애니메이션
-    const revealElements = document.querySelectorAll(".gsap-reveal");
-    revealElements.forEach((el) => {
-        gsap.to(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: "top 85%", 
-                toggleActions: "play none none none"
-            },
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out"
-        });
-    });
-
-    // 2. 상단 메뉴 & 우측 별 모양 네비게이션 스크롤 완벽 연동
-    const sections = document.querySelectorAll("section");
-    const allNavLinks = document.querySelectorAll("header nav a, #side-nav a"); 
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        allNavLinks.forEach((a) => {
-            a.classList.remove("active");
-            if (a.getAttribute("href").includes(current)) {
-                a.classList.add("active");
-            }
-        });
-    });
-
-    // 네비게이션 클릭 시 해당 섹션으로 부드럽게 스크롤
-    allNavLinks.forEach((link) => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href");
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: { y: targetId, offsetY: 50 },
-                ease: "power2.inOut"
-            });
-        });
-    });
+document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================================================
-    // 3. "기획자 진주형 입니다." 타자기 애니메이션 (기존 유지)
+    // 0. 메인 화면 타이핑 효과 (톤앤매너 완벽 일치)
     // ==========================================================================
-    const typingContainer = document.getElementById("typing-container");
-    
+    const typingContainer = document.getElementById('typing-container');
     if (typingContainer) {
-        const segments = [
-            { text: "기획자\u00A0", className: "text-small" },
-            { text: "진주형\u00A0", className: "text-big colored-name" }, 
-            { text: "입니다.", className: "text-small" }
-        ];
-
-        let segIdx = 0;
-        let charIdx = 0;
-        typingContainer.innerHTML = ""; 
-
-        function typeNextChar() {
-            if (segIdx >= segments.length) return; 
-
-            if (charIdx === 0) {
-                const span = document.createElement("span");
-                if (segments[segIdx].className) span.className = segments[segIdx].className;
-                typingContainer.appendChild(span);
-            }
-
-            const currentSpan = typingContainer.lastElementChild;
-            currentSpan.textContent += segments[segIdx].text[charIdx];
-            charIdx++;
-
-            if (charIdx >= segments[segIdx].text.length) {
-                segIdx++;
-                charIdx = 0;
-            }
-
-            setTimeout(typeNextChar, Math.random() * 50 + 100);
-        }
+        const textToType = "기획자 진주형 입니다.";
+        let charIndex = 0;
         
-        setTimeout(typeNextChar, 1200);
+        typingContainer.innerHTML = '';
+        
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                let htmlOutput = "";
+                
+                for (let i = 0; i <= charIndex; i++) {
+                    let char = textToType[i];
+                    
+                    if (i >= 4 && i <= 6) { 
+                        htmlOutput += `<span class="text-big colored-name">${char}</span>`;
+                    } else {
+                        htmlOutput += `<span class="text-small">${char}</span>`;
+                    }
+                }
+                
+                typingContainer.innerHTML = htmlOutput;
+                charIndex++;
+                setTimeout(typeWriter, 120);
+            }
+        }
+        setTimeout(typeWriter, 800);
     }
 
     // ==========================================================================
-    // 4. 스킬 원형 그래프 애니메이션 (0부터 차오르기) (기존 유지)
+    // 1. 다크모드/라이트모드 토글 (무조건 라이트모드로 시작 고정)
     // ==========================================================================
-    const skillItems = document.querySelectorAll('.skill-item');
-    
-    skillItems.forEach(item => {
-        const circle = item.querySelector('.progress-circle');
-        const percentText = item.querySelector('.skill-percent');
-        const targetPercent = parseInt(circle.getAttribute('data-target'));
-        const circumference = 283; 
-        
-        const targetOffset = circumference - (circumference * targetPercent) / 100;
-        
-        ScrollTrigger.create({
-            trigger: '#experience', 
-            start: 'top 70%',
-            onEnter: () => {
-                gsap.to(circle, {
-                    strokeDashoffset: targetOffset,
-                    duration: 2, 
-                    ease: "power2.out"
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    localStorage.removeItem('theme'); 
+    htmlElement.removeAttribute('data-theme');
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-theme') === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+            }
+        });
+    }
+
+    // ==========================================================================
+    // 2. 부드러운 스크롤 이동 (Smooth Scrolling)
+    // ==========================================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
                 });
-                
-                gsap.to(percentText, {
-                    innerHTML: targetPercent,
-                    duration: 2,
-                    snap: { innerHTML: 1 }, 
-                    ease: "power2.out",
-                    onUpdate: function() {
-                        percentText.innerHTML = Math.round(this.targets()[0].innerHTML) + '%';
-                    }
-                });
-            },
-            once: true 
+            }
         });
     });
 
-    // ==========================================================================
-    // 🔥 5. 하단 인사말 박스 유기적 맥동 애니메이션 (과하지 않게)
-    // ==========================================================================
-    const greetingBox = document.querySelector('.hero-greeting-box');
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // ==========================================================================
+        // 3. 상단 메뉴 및 우측 별 메뉴 스크롤 연동 밑줄 효과
+        // ==========================================================================
+        const sections = document.querySelectorAll('section');
+        const sideNavLinks = document.querySelectorAll('.side-star');
+        const topNavLinks = document.querySelectorAll('header nav ul li a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-    if (greetingBox) {
-        // 테두리 네온 광택 맥동 (box-shadow)
-        gsap.to(greetingBox, {
-            boxShadow: '0 0 35px rgba(70, 160, 230, 0.6), inset 0 0 20px rgba(70, 160, 230, 0.4)',
-            duration: 3, // 3초 동안 천천히
-            yoyo: true, // 갔다가 다시 옴 (맥동)
-            repeat: -1, // 무한 반복
-            ease: "power1.inOut" // 부드럽게
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            topNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ==========================================================================
+        // 4. My Skills 섹션 게이지 차오르는 애니메이션
+        // ==========================================================================
+        const progressCircles = document.querySelectorAll('.progress-circle');
+        const skillPercents = document.querySelectorAll('.skill-percent');
+        
+        if (progressCircles.length > 0) {
+            ScrollTrigger.create({
+                trigger: "#experience",
+                start: "top 75%", 
+                onEnter: () => {
+                    progressCircles.forEach((circle, index) => {
+                        const target = parseInt(circle.getAttribute('data-target'));
+                        const offset = 283 - (283 * target) / 100;
+                        
+                        gsap.to(circle, {
+                            strokeDashoffset: offset,
+                            duration: 1.5,
+                            ease: "power3.out",
+                            delay: index * 0.05
+                        });
+
+                        let percentObj = { val: 0 };
+                        gsap.to(percentObj, {
+                            val: target,
+                            duration: 1.5,
+                            ease: "power3.out",
+                            delay: index * 0.05,
+                            onUpdate: () => {
+                                if (skillPercents[index]) {
+                                    skillPercents[index].innerText = Math.floor(percentObj.val) + "%";
+                                }
+                            }
+                        });
+                    });
+                },
+                once: true 
+            });
+        }
+
+        // ==========================================================================
+        // 5. GSAP 요소들 스크롤 시 스르륵 나타나기
+        // ==========================================================================
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%", 
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 6. 이메일 & 전화번호 원클릭 복사 기능
+    // ==========================================================================
+    const copyToast = document.getElementById('copy-toast');
+    let toastTimeout;
+
+    function showToast(message) {
+        if (!copyToast) return;
+        copyToast.innerText = message; 
+        copyToast.classList.add('show');
+        
+        clearTimeout(toastTimeout);
+        
+        toastTimeout = setTimeout(() => {
+            copyToast.classList.remove('show');
+        }, 2500);
+    }
+
+    const emailBox = document.getElementById('email-box');
+    const userEmail = document.getElementById('user-email');
+    if (emailBox && userEmail) {
+        emailBox.addEventListener('click', () => {
+            navigator.clipboard.writeText(userEmail.innerText).then(() => {
+                showToast('이메일이 복사되었습니다!');
+            });
+        });
+    }
+
+    const phoneBox = document.getElementById('phone-box');
+    const userPhone = document.getElementById('user-phone');
+    if (phoneBox && userPhone) {
+        phoneBox.addEventListener('click', () => {
+            navigator.clipboard.writeText(userPhone.innerText).then(() => {
+                showToast('연락처가 복사되었습니다!');
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 🔥 7. 상단 스크롤 진행률 바 (Scroll Progress)
+    // ==========================================================================
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
         });
     }
 

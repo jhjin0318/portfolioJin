@@ -6,7 +6,6 @@
     <title>진주형 - Portfolio</title>
     
     <script src="https://cdn.jsdelivr.net/npm/pretendard-std@1.3.9/subset.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
@@ -15,21 +14,33 @@
 </head>
 <body>
 
+    <div id="scroll-progress" class="scroll-progress"></div>
+
     <header>
-        <div class="logo">진주형</div>
+        <a href="#about" class="mobile-logo">
+            <img src="logo.png" alt="진주형 로고" class="logo-img">
+        </a>
         <nav>
             <ul>
-                <li><a href="#about">About Me</a></li>
+                <li>
+                    <a href="#about" class="nav-brand">
+                        <img src="logo.png" alt="진주형 로고" class="logo-img">
+                    </a>
+                </li>
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#career">Career</a></li>
                 <li><a href="#experience">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
             </ul>
         </nav>
+        <button id="theme-toggle" class="theme-toggle" title="테마 변경">
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line></svg>
+        </button>
     </header>
 
     <nav id="side-nav">
-        <a href="#about" class="side-star active" title="About Me"></a>
+        <a href="#about" class="side-star active" title="Home"></a>
         <a href="#profile" class="side-star" title="Profile"></a>
         <a href="#career" class="side-star" title="Career"></a>
         <a href="#experience" class="side-star" title="Skills"></a>
@@ -39,15 +50,45 @@
     <main class="container">
         
         <section id="about" class="hero">
+            
             <div class="star-ripple-container">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
+                <div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+
+            <div class="rising-stars-container">
+                <div class="rising-star" style="--star-x: 45%; --star-size: 16px; --star-speed: 15s; --star-delay: 3s;"></div>
+                <div class="rising-star" style="--star-x: 50%; --star-size: 10px; --star-speed: 18s; --star-delay: 6s;"></div>
+                <div class="rising-star" style="--star-x: 52%; --star-size: 14px; --star-speed: 16s; --star-delay: 2s;"></div>
+                <div class="rising-star" style="--star-x: 58%; --star-size: 20px; --star-speed: 13s; --star-delay: 5s;"></div>
+                <div class="rising-star" style="--star-x: 2%; --star-size: 14px; --star-speed: 17s; --star-delay: 4s;"></div>
+                <div class="rising-star" style="--star-x: 8%; --star-size: 18px; --star-speed: 14s; --star-delay: 1s;"></div>
+                <div class="rising-star" style="--star-x: 22%; --star-size: 10px; --star-speed: 19s; --star-delay: 7s;"></div>
+                <div class="rising-star" style="--star-x: 40%; --star-size: 20px; --star-speed: 12s; --star-delay: 3s;"></div>
+                <div class="rising-star" style="--star-x: 5%; --star-size: 12px; --star-speed: 16s; --star-delay: 2s;"></div>
+                <div class="rising-star" style="--star-x: 10%; --star-size: 15px; --star-speed: 15s; --star-delay: 0s;"></div>
+                <div class="rising-star" style="--star-x: 18%; --star-size: 16px; --star-speed: 14s; --star-delay: 5s;"></div>
+                <div class="rising-star" style="--star-x: 30%; --star-size: 25px; --star-speed: 11s; --star-delay: 2s;"></div>
+                <div class="rising-star" style="--star-x: 55%; --star-size: 10px; --star-speed: 18s; --star-delay: 1s;"></div>
+                <div class="rising-star" style="--star-x: 70%; --star-size: 20px; --star-speed: 13s; --star-delay: 4s;"></div>
+                <div class="rising-star" style="--star-x: 80%; --star-size: 22px; --star-speed: 12s; --star-delay: 6s;"></div>
+                <div class="rising-star" style="--star-x: 85%; --star-size: 18px; --star-speed: 16s; --star-delay: 3s;"></div>
+                <div class="rising-star" style="--star-x: 90%; --star-size: 14px; --star-speed: 17s; --star-delay: 2s;"></div>
+                <div class="rising-star" style="--star-x: 95%; --star-size: 12px; --star-speed: 15s; --star-delay: 7s;"></div>
+                <div class="rising-star" style="--star-x: 98%; --star-size: 10px; --star-speed: 19s; --star-delay: 8s;"></div>
             </div>
 
             <div class="hero-image-wrap gsap-reveal">
-                <div class="image-frame">
-                    <img src="me.png" alt="기획자 진주형" class="hero-profile-img">
+                <div class="frame-wrapper">
+                    <svg class="arch-text" viewBox="0 0 420 220">
+                        <path id="arch-curve" d="M 10 210 A 200 200 0 0 1 410 210" fill="transparent" />
+                        <text>
+                            <textPath href="#arch-curve" startOffset="50%" text-anchor="middle">PROJECT MANAGER</textPath>
+                        </text>
+                    </svg>
+                    <div class="image-frame">
+                        <img src="me.png" alt="기획자 진주형" class="hero-profile-img">
+                    </div>
+                    <div class="bottom-name">JIN JU HYEONG</div>
                 </div>
             </div>
 
@@ -58,9 +99,10 @@
                     <span id="typing-container"></span>
                 </h1>
             </div>
-
-            <div class="hero-greeting-box gsap-reveal">
-                <p>"브랜드의 고유한 가치를 발굴하고, 소비자의 기억에 깊은 여운을 남기는 스토리로 기획하여 대체 불가능한 매력으로 만들겠습니다."</p>
+            
+            <div class="hero-btns">
+                <button class="btn btn-gradient" onclick="window.open('https://www.notion.so/About-Me-8945b579d931837aa1b501dd74c62f8a', '_blank')">이력서 보기</button>
+                <button class="btn btn-gradient" onclick="window.open('https://github.com/jhjin0318', '_blank')">깃허브 보기</button>
             </div>
         </section>
 
@@ -69,22 +111,26 @@
                 <h2 class="section-title">Profile</h2>
                 <span class="section-subtitle">자기소개</span>
             </div>
-            
             <div class="profile-content gsap-reveal">
                 <div class="profile-image">
                     <img src="I.png" alt="진주형 프로필 사진" class="inner-profile-pic">
                 </div>
-                
                 <div class="profile-details">
                     <div class="info-group">
-                        <p><strong>이름</strong> 진주형</p>
-                        <p><strong>생년월일</strong> 2001.03.18</p>
-                        <p><strong>연락처</strong> 010-3063-8017 | jhjin0318@naver.com</p>
-                        <p><strong>거주지</strong> 경기도 덕양구</p>
-                        <p><strong>학력</strong> 대진대학교</p>
-                        <p><strong>전공</strong> 미디어커뮤니케이션학과</p>
+                        <p><strong>이름</strong> <span>진주형</span></p>
+                        <p><strong>생년월일</strong> <span>2001.03.18</span></p>
+                        <p><strong>연락처</strong> <span>010-3063-8017</span></p>
+                        <p>
+                            <strong>이메일</strong> 
+                            <span class="email-wrap">
+                                <span>jhjin0318@naver.com</span>
+                                <span>jinj87361@gmail.com</span>
+                            </span>
+                        </p>
+                        <p><strong>거주지</strong> <span>경기도 덕양구</span></p>
+                        <p><strong>학력</strong> <span>대진대학교</span></p>
+                        <p><strong>전공</strong> <span>미디어커뮤니케이션학과</span></p>
                     </div>
-                    
                     <div class="profile-tags">
                         <span class="tag">#창의적인_기획</span>
                         <span class="tag">#논리적인_스토리텔러</span>
@@ -99,7 +145,6 @@
                 <h2 class="section-title">Career & Activities</h2>
                 <span class="section-subtitle">경력 및 주요 활동</span>
             </div>
-            
             <div class="career-list">
                 <div class="career-item gsap-reveal">
                     <div class="career-period">
@@ -116,7 +161,7 @@
                         </ul>
                     </div>
                 </div>
-
+                
                 <div class="career-item gsap-reveal">
                     <div class="career-period">
                         <span>Work Experience</span>
@@ -125,6 +170,7 @@
                     <div class="career-details">
                         <h3>실무 및 기타 경험</h3>
                         <ul class="career-desc-list">
+                            <li><strong>국비지원교육 / 챗GPT 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정</strong> 수료 (6개월)</li>
                             <li>중식 레스토랑 야래향 매니저 (1년 근무)</li>
                             <li>단기 아르바이트 (서적 관리, 식당 서비스 응대, 공공기관 동사무소 업무 지원 등)</li>
                             <li>제11항공단 병장 만기 전역</li>
@@ -157,97 +203,19 @@
                 <h2 class="section-title">My Skills</h2>
                 <span class="section-subtitle">내 기술과 역량</span>
             </div>
-            
             <div class="skills-grid gsap-reveal">
-                
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">Premiere Pro</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">After Effects</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="85"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">Figma</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">Photoshop</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="75"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">Illustrator</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="70"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">HTML / CSS</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="95"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">MS Office</p>
-                </div>
-
-                <div class="skill-item">
-                    <div class="circular-progress">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
-                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle>
-                        </svg>
-                        <div class="skill-percent">0%</div>
-                    </div>
-                    <p class="skill-name">Marketing Plan</p>
-                </div>
-
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Premiere Pro</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">After Effects</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="85"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Figma</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Photoshop</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="75"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Illustrator</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">HTML</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">CSS</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="70"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">JavaScript</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="70"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">React</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="75"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Git</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="95"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">MS Office</p></div>
+                <div class="skill-item"><div class="circular-progress"><svg viewBox="0 0 100 100"><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle></svg><div class="skill-percent">0%</div></div><p class="skill-name">Marketing Plan</p></div>
             </div>
         </section>
 
@@ -257,15 +225,117 @@
                 <span class="section-subtitle">진행한 프로젝트</span>
             </div>
             
-            <div class="work-grid">
-                <div class="work-card gsap-reveal">
-                    <div class="work-img"></div> 
+            <div class="work-list">
+                
+                <div class="work-row gsap-reveal">
+                    <div class="work-visual">
+                        <div class="video-wrapper">
+                            <video id="coca-video" class="project-video" src="cocacola.mp4" playsinline preload="metadata"></video>
+                            <button class="video-play-btn" id="coca-play-btn" title="영상 재생">
+                                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
                     <div class="work-info">
-                        <h3>[프로젝트명]</h3>
-                        <p class="work-desc">[설명]</p>
-                        <a href="#" class="btn-primary">기획서 보러가기 →</a>
+                        <div class="work-num">01</div>
+                        <h3>코카콜라 광고 숏폼</h3>
+                        <p class="work-specs">제작기간 : 1주 | 숏폼 | AI 활용</p>
+                        <p class="work-desc">'코-크 타임!' 영상에 AI 기술을 접목하여, 완전히 새로운 시각적 경험으로 재탄생시킨 트렌디한 숏폼 콘텐츠 기획 및 제작 프로젝트입니다.</p>
+                        <div class="work-btns">
+                            <a href="cocacola_plan.pdf" target="_blank" class="btn-primary">기획서 보러가기 →</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="work-row reverse gsap-reveal">
+                    <div class="work-visual" style="background-color: transparent; box-shadow: none; border: none; overflow: visible;">
+                        <div class="dual-mockup-container">
+                            
+                            <div class="mockup-pc airbnb-video-pc">
+                                <div class="video-wrapper" style="height: 100%;">
+                                    <iframe src="https://drive.google.com/file/d/1TlcNRcjGIgeRM712Vns1KpbLVKIIh92H/preview" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border: none;"></iframe>
+                                </div>
+                            </div>
+                            
+                            <a href="https://www.figma.com/proto/BPEpngFkZeepFct8NqsUA1/%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85?page-id=0%3A1&node-id=1-1079&viewport=204%2C168%2C0.12&t=KmIvwPBx8WWe7Sok-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A1079" target="_blank" class="mockup-mobile airbnb-scroll-mockup">
+                                <div class="browser-content scroll-content">
+                                    <img src="airbnb_scroll.png" alt="Airbnb 앱 메인화면 긴 이미지" class="airbnb-long-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="no-img-placeholder" style="display: none; height: 1000px; background: linear-gradient(#e0e8ed, #fff); flex-direction: column; justify-content: start; align-items: center; padding-top: 5rem;">
+                                        <div style="color: #64748b; font-size: 1.1rem; text-align: center; line-height: 1.6;">
+                                            앱 전체화면 긴 이미지<br><strong>(airbnb_scroll.png)</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="figma-badge">Click!</div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-num">02</div>
+                        <h3>Airbnb 리디자인</h3>
+                        <p class="work-specs">제작기간 : 2주 | 앱 기획 및 UI/UX 개선</p>
+                        <p class="work-desc">에어비앤비 앱의 사용자 여정(User Journey)과 페르소나 분석, 설문조사 등을 바탕으로 도출한 UI/UX 개선안 및 한국 로컬 문화 중심의 새로운 광고 스토리보드 기획입니다.</p>
+                        <div class="work-btns">
+                            <a href="https://www.figma.com/deck/7Mhk55kk7PIfF6lRyRQ0Ug/RE_FINDED-%EA%B8%B0%ED%9A%8D%EC%84%9C?node-id=6-2808&t=RQ9otpEWMbLegQSS-1" target="_blank" class="btn-primary">기획서 보러가기 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-row gsap-reveal">
+                    <div class="work-visual" style="background-color: transparent; box-shadow: none; border: none;">
+                        <div class="dual-mockup-container">
+                            <div class="mockup-pc">
+                                <div class="browser-header">
+                                    <span class="dot close"></span><span class="dot min"></span><span class="dot max"></span>
+                                    <div class="browser-url">smartstore.naver.com/pearlmarkets</div>
+                                </div>
+                                <div class="browser-content">
+                                    <img src="smartstore_pc.png" alt="스마트스토어 PC 화면" class="tiktok-web-img">
+                                </div>
+                            </div>
+                            <div class="mockup-mobile">
+                                <div class="mobile-notch"></div>
+                                <div class="browser-content">
+                                    <img src="smartstore_mobile.png" alt="스마트스토어 모바일 화면" class="tiktok-web-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-num">03</div>
+                        <h3>스마트스토어 개설 작업</h3>
+                        <p class="work-specs">제작기간 : 1일 | 상세페이지 | 커머스</p>
+                        <p class="work-desc">의류 제품의 셀링 포인트를 극대화하고 타겟 고객의 구매 전환율을 높이기 위한 스마트스토어 상세페이지 구성 및 카피라이팅 기획입니다.</p>
+                        <div class="work-btns">
+                            <a href="https://smartstore.naver.com/pearlmarkets" target="_blank" class="btn-primary">스토어 방문하기 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-row reverse gsap-reveal">
+                    <div class="work-visual">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <span class="dot close"></span><span class="dot min"></span><span class="dot max"></span>
+                                <div class="browser-url">tiktok.com/@aimagicjin</div>
+                            </div>
+                            <div class="browser-content">
+                                <img src="tiktok.png" alt="TikTok 채널 메인페이지" class="tiktok-web-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-num">04</div>
+                        <h3>TikTok AI 영상 제작 채널 개설</h3>
+                        <p class="work-specs">채널 운영 | 마케팅 | 콘텐츠 기획</p>
+                        <p class="work-desc">숏폼 알고리즘 특성에 맞춘 AI 숏폼 콘텐츠 기획, 타겟 분석 및 전반적인 채널 성장 전략 수립 프로젝트입니다.</p>
+                        <div class="work-btns">
+                            <a href="https://www.tiktok.com/@aimagicjin" target="_blank" class="btn-primary">채널 방문하기 →</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -273,11 +343,41 @@
 
     <footer id="contact">
         <div class="container">
-            <p>진주형</p>
-            <p style="font-size: 0.95rem; margin-top: 0.75rem;">jhjin0318@naver.com | 010-3063-8017</p>
+            <div class="contact-info-grid">
+                <div class="contact-box copy-box" id="email-box" title="클릭하여 이메일 복사">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="contact-icon"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span id="user-email">jhjin0318@naver.com</span>
+                </div>
+                <div class="contact-box copy-box" id="phone-box" title="클릭하여 연락처 복사">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="contact-icon"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span id="user-phone">010-3063-8017</span>
+                </div>
+            </div>
+            <div class="footer-copyright"><p>© 2026 JIN JU HYEONG. All rights reserved.</p>
+                <p>Designed by Jin Ju Hyeong.</p>
+            </div>
         </div>
     </footer>
 
+    <div id="copy-toast" class="copy-toast">복사되었습니다!</div>
+
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            /* 코카콜라 영상 스크립트 */
+            const cocaPlayBtn = document.getElementById('coca-play-btn');
+            const cocaVideo = document.getElementById('coca-video');
+            const cocaWrapper = cocaPlayBtn ? cocaPlayBtn.closest('.video-wrapper') : null;
+
+            if(cocaPlayBtn && cocaVideo) {
+                cocaPlayBtn.addEventListener('click', () => {
+                    cocaVideo.play();
+                    cocaVideo.setAttribute('controls', 'controls'); 
+                    cocaWrapper.classList.add('is-playing'); 
+                });
+            }
+        });
+    </script>
 </body>
 </html>
